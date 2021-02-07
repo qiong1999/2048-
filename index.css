@@ -1,0 +1,58 @@
+* {
+    list-style:none;
+  
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body {
+    background-color:#ffffe0;
+    position:relative;
+}
+.wrapper{
+   
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    text-align:center;    
+    background-color:pink;
+    color:#8f7a66;
+    width:1000px;                 
+}                                                                                                                                                                                                                                                                                                                                                                                                               
+
+.title{
+    font-size:70px;
+    
+}
+.slogan{
+    font-size:17px;
+}
+.newgame,.score ,.best{
+    display:inline-block;
+    vertical-align:top;
+    padding:0 50px ;
+    height:50px;
+    margin:20px 10px;
+    border-radius:5px;
+    color:#fff;
+    font-size:20px;
+    
+}
+.newgame{
+    line-height:50px;
+    background:#8f7a66;
+    
+}
+.newgame:hover{
+    padding:0px 55px;
+    height:51px;
+    line-height:51px;
+    font-size:25px;
+}
+.score,.best{
+    line-height:25px;
+    background:#d3c2b3;
+}
+
+/*游戏主面板*/
