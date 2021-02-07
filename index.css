@@ -1,58 +1,72 @@
 * {
-    list-style:none;
-  
-    padding:0;
-    margin:0;
-    box-sizing:border-box;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
 }
 
 body {
-    background-color:#ffffe0;
-    position:relative;
+  background-color: pink;
+  position: relative;
 }
-.wrapper{
-   
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    text-align:center;    
-    background-color:pink;
-    color:#8f7a66;
-    width:1000px;                 
-}                                                                                                                                                                                                                                                                                                                                                                                                               
+.wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 
-.title{
-    font-size:70px;
-    
-}
-.slogan{
-    font-size:17px;
-}
-.newgame,.score ,.best{
-    display:inline-block;
-    vertical-align:top;
-    padding:0 50px ;
-    height:50px;
-    margin:20px 10px;
-    border-radius:5px;
-    color:#fff;
-    font-size:20px;
-    
-}
-.newgame{
-    line-height:50px;
-    background:#8f7a66;
-    
-}
-.newgame:hover{
-    padding:0px 55px;
-    height:51px;
-    line-height:51px;
-    font-size:25px;
-}
-.score,.best{
-    line-height:25px;
-    background:#d3c2b3;
+  color: #8f7a66;
+  width: 400px;
 }
 
-/*游戏主面板*/
+.title {
+  font-size: 50px;
+}
+.slogan {
+  font-size: 17px;
+}
+.newgame,
+.score,
+.best {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 15px;
+  height: 50px;
+  margin: 20px 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+}
+.newgame {
+  line-height: 50px;
+  background: #8f7a66;
+}
+.newgame:hover {
+  font-size: 15px;
+  border: 5px inset #b89e89;
+  line-height: 40px;
+}
+.score,
+.best {
+  line-height: 25px;
+  background: #b9aa9c;
+}
+
+.gameboard {
+  width: 400px;
+  height: 372px;
+  padding: 5px 5px;
+  background: #b9aa9c;
+  border-radius:5px ;
+}
+
+.grid {
+  float: left;
+  width: 87px;
+  height: 80px;
+  line-height: 80px;
+  margin: 5px;
+  background: #ffffe0;
+  border-radius: 5px;
+}
