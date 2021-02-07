@@ -55,7 +55,7 @@ body {
 
 .gameboard {
   width: 400px;
-  height: 372px;
+  height: 400px;
   padding: 5px 5px;
   background: #b9aa9c;
   border-radius:5px ;
@@ -64,8 +64,10 @@ body {
 .grid {
   float: left;
   width: 87px;
-  height: 80px;
-  line-height: 80px;
+  height: 87px;
+  line-height: 87px;
+  font-size:30px;
+  font-weight:bolder;
   margin: 5px;
   background: #ffffe0;
   border-radius: 5px;
