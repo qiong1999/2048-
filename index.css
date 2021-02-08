@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: pink;
+  background-color: #ffffe0;
   position: relative;
 }
 .wrapper {
@@ -44,7 +44,7 @@ body {
 }
 .newgame:hover {
   font-size: 15px;
-  border: 5px inset #b89e89;
+  border: 5px inset #b89c89;
   line-height: 40px;
 }
 .score,
@@ -57,7 +57,7 @@ body {
   width: 400px;
   height: 400px;
   padding: 5px 5px;
-  background: #b9aa9c;
+  background: #b9ab9c;
   border-radius:5px ;
 }
 
