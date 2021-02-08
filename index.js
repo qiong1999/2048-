@@ -1,3 +1,9 @@
+//页面加载
+window.onload = function () {
+  createRandomGrid(2);
+  let best = document.getElementsByClassName("best")[0].children[2];
+  best.innerText = localStorage.getItem("best");
+};
 //随机生成格子
 function createRandomGrid(num) {
   let x = Math.floor(Math.random() * 4) + 1;
@@ -24,12 +30,15 @@ function clearGrid() {
 //new Game重新开始游戏
 function newGame() {
   let newGame = document.getElementsByClassName("newgame")[0];
+  let best = document.getElementsByClassName("best")[0].children[2];
 
   newGame.addEventListener(
     "click",
     function () {
       clearGrid();
       createRandomGrid(2);
+      localStorage.setItem("best", best.innerText);
+      console.log("localStorage", localStorage.getItem("best"));
     },
     false
   );
@@ -112,7 +121,8 @@ function howToGo(grid, direction, position) {
     go;
   prevGrid = getPrevGrid(grid, direction);
   gridNum = getGridNum(grid);
-
+  let score = document.getElementsByClassName("score")[0].children[2];
+  let best = document.getElementsByClassName("best")[0].children[2];
   if (prevGrid) {
     prevGridNum = getGridNum(prevGrid);
   } else {
@@ -131,6 +141,10 @@ function howToGo(grid, direction, position) {
     return go || 1;
   } else if (gridNum === prevGridNum) {
     gridNum = gridNum + prevGridNum;
+    let goard = parseInt(score.innerText) + gridNum;
+    let bestNum = parseInt(best.innerText);
+    score.innerText = goard;
+    best.innerText = goard > bestNum ? goard : bestNum;
     prevGrid.innerText = gridNum + "";
     prevGrid.style.backgroundColor = numberToColor(gridNum);
     grid.innerText = "";
