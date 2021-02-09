@@ -6,6 +6,16 @@ window.onload = function () {
 };
 //随机生成格子
 function createRandomGrid(num) {
+  let gridNum = 0;
+  let grid = document.getElementsByClassName("grid");
+  for (let i = 0; i < grid.length; i++) {
+    if (grid[i].innerText !== "") {
+      gridNum = gridNum + 1;
+    }
+  }
+  if (gridNum === 16) {
+    return ;
+  }
   let x = Math.floor(Math.random() * 4) + 1;
   let y = Math.floor(Math.random() * 4) + 1;
   let newGrid = document.getElementsByClassName("grid" + x + y)[0];
@@ -53,18 +63,20 @@ function newGame() {
 function getReady() {
   window.onkeydown = function (e) {
     keyDown(e.keyCode);
+    gameOver();
   };
 }
 
 newGame();
+//gameOver()
 getReady();
 keyDown();
 //监听方向键控制方块滑动
-function keyDown(keyCode) {
+function keyDown(keyCode, flag = true) {
   let dire,
     arr,
-    count = 0,
-    signal = 0;
+    signal = 0,
+    count = 0;
   switch (keyCode) {
     case 37:
       dire = "left";
@@ -88,19 +100,19 @@ function keyDown(keyCode) {
     if (dire === "up" || dire === "left") {
       for (let j = 1; j <= 3; j++) {
         position = j;
-        go = howToGo(arr[j], dire, position);
+        go = howToGo(arr[j], dire, position, flag);
         signal += go;
         if (go > 1) {
-          count += go;
+          count = count + 1;
         }
       }
     } else if (dire === "right" || dire === "down") {
       for (let j = 2; j >= 0; j--) {
         position = 3 - j;
-        go = howToGo(arr[j], dire, position);
+        go = howToGo(arr[j], dire, position, flag);
         signal += go;
         if (go > 1) {
-          count += go;
+          count = count + 1;
         }
       }
     }
@@ -108,13 +120,11 @@ function keyDown(keyCode) {
   if (signal > 0) {
     createRandomGrid(2);
   }
-  if (count > 0) {
-  }
   return count;
 }
 
 //方块滑动方式
-function howToGo(grid, direction, position) {
+function howToGo(grid, direction, position, flag) {
   let prevGrid,
     prevGridNum,
     gridNum = 0,
@@ -130,28 +140,34 @@ function howToGo(grid, direction, position) {
   }
 
   if (gridNum && !prevGridNum) {
-    prevGrid.innerHTML = grid.innerHTML;
-    prevGrid.style.backgroundColor = numberToColor(gridNum);
-    grid.innerText = "";
-    grid.style.backgroundColor = "";
+    if (flag) {
+      prevGrid.innerHTML = grid.innerHTML;
+      prevGrid.style.backgroundColor = numberToColor(gridNum);
+      grid.innerText = "";
+      grid.style.backgroundColor = "";
+    }
+
     position -= 1;
     if (position) {
-      go = howToGo(prevGrid, direction, position);
+      go = howToGo(prevGrid, direction, position, flag);
     }
     return go || 1;
   } else if (gridNum === prevGridNum) {
     gridNum = gridNum + prevGridNum;
-    let goard = parseInt(score.innerText) + gridNum;
-    let bestNum = parseInt(best.innerText);
-    score.innerText = goard;
-    best.innerText = goard > bestNum ? goard : bestNum;
-    prevGrid.innerText = gridNum + "";
-    prevGrid.style.backgroundColor = numberToColor(gridNum);
-    grid.innerText = "";
-    grid.style.backgroundColor = "";
-    if (gridNum === 2048) {
-      alert("win");
+    if (flag) {
+      let goard = parseInt(score.innerText) + gridNum;
+      let bestNum = parseInt(best.innerText);
+      score.innerText = goard;
+      best.innerText = goard > bestNum ? goard : bestNum;
+      prevGrid.innerText = gridNum + "";
+      prevGrid.style.backgroundColor = numberToColor(gridNum);
+      grid.innerText = "";
+      grid.style.backgroundColor = "";
+      if (gridNum === 2048) {
+        alert("win");
+      }
     }
+
     return gridNum;
   } else {
     return 0;
@@ -234,4 +250,27 @@ function numberToColor(num) {
       break;
   }
   return color;
+}
+
+function gameOver() {
+  let gridNum = 0;
+  let tempGrid = 0;
+  let grid = document.getElementsByClassName("grid");
+  for (let i = 0; i < grid.length; i++) {
+    if (grid[i].innerText !== "") {
+      gridNum = gridNum + 1;
+    }
+  }
+  if (gridNum === 16) {
+    let num =
+      keyDown(37, false) ||
+      keyDown(38, false) ||
+      keyDown(39, false) ||
+      keyDown(40, false);
+     if(!num){
+      setTimeout(()=>{
+        alert("game over")
+      },1000)
+     }
+  }
 }
