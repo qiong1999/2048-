@@ -10,6 +10,11 @@ body {
   background-color: #ffffe0;
   position: relative;
 }
+button {
+  outline: none;
+  border: none;
+  background: none;
+}
 .wrapper {
   position: absolute;
   left: 50%;
@@ -58,7 +63,7 @@ body {
   height: 400px;
   padding: 5px 5px;
   background: #b9ab9c;
-  border-radius:5px ;
+  border-radius: 5px;
 }
 
 .grid {
@@ -66,9 +71,51 @@ body {
   width: 87px;
   height: 87px;
   line-height: 87px;
-  font-size:30px;
-  font-weight:bolder;
+  font-size: 30px;
+  font-weight: bolder;
   margin: 5px;
   background: #ffffe0;
   border-radius: 5px;
+}
+.module {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+.alert {
+  position: relative;
+  font-weight: bold;
+  font-size: 30px;
+  color: #8f7a66;
+  background-color: #ffffe0;
+  width: 500px;
+  height: 250px;
+  line-height: 250px;
+  text-align: center;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #8f7a66;
+}
+
+.btn {
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  width: 100px;
+  height: 30px;
+  font-size:17px;
+  border-radius:5px;
+  background:#8f7a66;
+  color:#fff;
+}
+
+.footer{
+  position:fixed;
+  bottom:10px;
+  right:20px;
+  color: #8f7a66;
 }

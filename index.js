@@ -14,7 +14,7 @@ function createRandomGrid(num) {
     }
   }
   if (gridNum === 16) {
-    return ;
+    return;
   }
   let x = Math.floor(Math.random() * 4) + 1;
   let y = Math.floor(Math.random() * 4) + 1;
@@ -164,7 +164,7 @@ function howToGo(grid, direction, position, flag) {
       grid.innerText = "";
       grid.style.backgroundColor = "";
       if (gridNum === 2048) {
-        alert("win");
+        Alert("win");
       }
     }
 
@@ -267,10 +267,29 @@ function gameOver() {
       keyDown(38, false) ||
       keyDown(39, false) ||
       keyDown(40, false);
-     if(!num){
-      setTimeout(()=>{
-        alert("game over")
-      },1000)
-     }
+    if (!num) {
+      setTimeout(() => {
+        Alert("game over");
+      }, 500);
+    }
   }
+}
+function Alert(content) {
+  let body = document.body;
+  let module = document.createElement("div");
+  let alert = document.createElement("div");
+  let btn = document.createElement("button");
+  module.classList.add("module");
+  alert.innerText = `${content ? content : ""}`;
+  btn.classList.add("btn");
+  btn.innerText = "close";
+  alert.classList.add("alert");
+  alert.appendChild(btn);
+  module.appendChild(alert);
+  body.appendChild(module);
+  btn.onclick = function () {
+    module.remove();
+    clearGrid();
+    createRandomGrid(2);
+  };
 }
