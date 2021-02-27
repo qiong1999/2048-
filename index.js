@@ -3,7 +3,12 @@ window.onload = function () {
   createRandomGrid(2);
   let best = document.getElementsByClassName("best")[0].children[2];
   best.innerText = localStorage.getItem("best");
+  newGame();
+  //gameOver()
+  getReady();
+  keyDown();
 };
+
 //随机生成格子
 function createRandomGrid(num) {
   let gridNum = 0;
@@ -27,6 +32,7 @@ function createRandomGrid(num) {
     createRandomGrid(num);
   }
 }
+
 //清除棋板上的方块
 function clearGrid() {
   let grid = document.getElementsByClassName("grid");
@@ -37,6 +43,7 @@ function clearGrid() {
     grid[i].innerText = "";
   }
 }
+
 //new Game重新开始游戏
 function newGame() {
   let newGame = document.getElementsByClassName("newgame")[0];
@@ -59,6 +66,7 @@ function newGame() {
  * 左键 39
  * 右键 37
  */
+
 //开始游戏
 function getReady() {
   window.onkeydown = function (e) {
@@ -67,10 +75,6 @@ function getReady() {
   };
 }
 
-newGame();
-//gameOver()
-getReady();
-keyDown();
 //监听方向键控制方块滑动
 function keyDown(keyCode, flag = true) {
   let dire,
